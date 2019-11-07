@@ -12,24 +12,24 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    height: 750px;
-    width: 750px;
+    height: 600px;
+    width: 600px;
     background-color: black;
     margin: 0 auto;
     padding: 5px;
 }
 
 .box {
-    flex: 0 0 240px;
-    height: 240px;
+    flex: 0 0 190px;
+    height: 190px;
     margin-bottom: 5px;
     margin-top: 5px;
     background-color: #999;
 }
 
-.reset {
-    width: 180px;
-    height: 70px;
-    font-size: 30px;
+.button {
+    width: 130px;
+    height: 60px;
+    font-size: 20px;
 
 }
