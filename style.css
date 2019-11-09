@@ -39,3 +39,7 @@ div.buttons {
     width: 150px;
     height: auto;
 }
+
+button {
+    margin: 5px;
+}

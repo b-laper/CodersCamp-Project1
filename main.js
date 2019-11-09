@@ -18,30 +18,70 @@ const playerChoose = (e) => {
     if (playerTurn === true) playerWithCircle(e);
     else playerWithCross(e);
     console.log(e.target.dataset.option);
-    console.log(e.target);
+    console.log(resultPlayer1);
+    console.log(resultPlayer2);
+    checkGame()
     if (turnCounter === lastTurn) {
+        checkGame();
         playerInfo.textContent = "Koniec gry";
-        // checkGame()
     }
 }
 
 const playerWithCross = (e) => {
     e.target.style.backgroundImage = "url(img/krzyzyk.png)";
-    playerInfo.textContent = "Następny ruch: Tura gracza drugiego (Kółko)";
+    playerInfo.textContent = "Następny ruch: Tura gracza (Kółko)";
     resultPlayer1.push(optionSet);
 }
 
 const playerWithCircle = (e) => {
     e.target.style.backgroundImage = "url(img/kolko.png)";
-    playerInfo.textContent = "Następny ruch: Tura gracza pierwszego (Krzyżyk)";
+    playerInfo.textContent = "Następny ruch: Tura gracza (Krzyżyk)";
     resultPlayer2.push(optionSet);
 }
-//const checkGame() => {
-//     if (123 456 789
-// 147 258 369
-// 159 357)
-// }
 
+const checkGame = () => { // Sprawdzenie gracza (Krzyżyk)
+    // Pola poziome
+    if ((resultPlayer1.includes("1") == true) && (resultPlayer1.includes("2") == true) && (resultPlayer1.includes("3") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+    } else if ((resultPlayer1.includes("4") == true) && (resultPlayer1.includes("5") == true) && (resultPlayer1.includes("6") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+    } else if ((resultPlayer1.includes("7") == true) && (resultPlayer1.includes("8") == true) && (resultPlayer1.includes("9") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+    } // Pola pionowe
+    else if ((resultPlayer1.includes("1") == true) && (resultPlayer1.includes("4") == true) && (resultPlayer1.includes("7") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+    } else if ((resultPlayer1.includes("2") == true) && (resultPlayer1.includes("5") == true) && (resultPlayer1.includes("8") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+    } else if ((resultPlayer1.includes("3") == true) && (resultPlayer1.includes("6") == true) && (resultPlayer1.includes("9") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+    } // Pola ukośne
+    else if ((resultPlayer1.includes("1") == true) && (resultPlayer1.includes("5") == true) && (resultPlayer1.includes("9") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+    } else if ((resultPlayer1.includes("3") == true) && (resultPlayer1.includes("5") == true) && (resultPlayer1.includes("7") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+    }
+    // Sprawdzenie gracza (Kółko)
+    // Pola poziome
+    if ((resultPlayer2.includes("1") == true) && (resultPlayer2.includes("2") == true) && (resultPlayer2.includes("3") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Kółko)";
+    } else if ((resultPlayer2.includes("4") == true) && (resultPlayer2.includes("5") == true) && (resultPlayer2.includes("6") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Kółko)";
+    } else if ((resultPlayer2.includes("7") == true) && (resultPlayer2.includes("8") == true) && (resultPlayer2.includes("9") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Kółko)";
+    } // Pola pionowe
+    else if ((resultPlayer2.includes("1") == true) && (resultPlayer2.includes("4") == true) && (resultPlayer2.includes("7") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Kółko)";
+    } else if ((resultPlayer2.includes("2") == true) && (resultPlayer2.includes("5") == true) && (resultPlayer2.includes("8") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Kółko)";
+    } else if ((resultPlayer2.includes("3") == true) && (resultPlayer2.includes("6") == true) && (resultPlayer2.includes("9") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Kółko)";
+    } // Pola ukośne
+    else if ((resultPlayer2.includes("1") == true) && (resultPlayer2.includes("5") == true) && (resultPlayer2.includes("9") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Kółko)";
+    } else if ((resultPlayer2.includes("3") == true) && (resultPlayer2.includes("5") == true) && (resultPlayer2.includes("7") == true)) {
+        playerInfo.textContent = "Wygrywa gracz (Kółko)";
+    }
+}
 boxes.forEach(box => {
     box.addEventListener("click", playerChoose, {
         once: true
@@ -49,6 +89,8 @@ boxes.forEach(box => {
 })
 
 const resetGame = () => {
+    resultPlayer1 = [];
+    resultPlayer2 = [];
     turnCounter = 0;
     playerTurn = true;
     playerInfo.textContent = "Rozpocznij grę od Gracza pierwszego (Krzyżyk)"
