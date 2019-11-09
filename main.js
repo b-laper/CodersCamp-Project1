@@ -43,43 +43,59 @@ const checkGame = () => { // Sprawdzenie gracza (Krzyżyk)
     // Pola poziome
     if ((resultPlayer1.includes("1") == true) && (resultPlayer1.includes("2") == true) && (resultPlayer1.includes("3") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer1.includes("4") == true) && (resultPlayer1.includes("5") == true) && (resultPlayer1.includes("6") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer1.includes("7") == true) && (resultPlayer1.includes("8") == true) && (resultPlayer1.includes("9") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+        playerInfo.style.color = "Red"
     } // Pola pionowe
     else if ((resultPlayer1.includes("1") == true) && (resultPlayer1.includes("4") == true) && (resultPlayer1.includes("7") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer1.includes("2") == true) && (resultPlayer1.includes("5") == true) && (resultPlayer1.includes("8") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer1.includes("3") == true) && (resultPlayer1.includes("6") == true) && (resultPlayer1.includes("9") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+        playerInfo.style.color = "Red"
     } // Pola ukośne
     else if ((resultPlayer1.includes("1") == true) && (resultPlayer1.includes("5") == true) && (resultPlayer1.includes("9") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer1.includes("3") == true) && (resultPlayer1.includes("5") == true) && (resultPlayer1.includes("7") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Krzyżyk)";
+        playerInfo.style.color = "Red"
     }
     // Sprawdzenie gracza (Kółko)
     // Pola poziome
     if ((resultPlayer2.includes("1") == true) && (resultPlayer2.includes("2") == true) && (resultPlayer2.includes("3") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Kółko)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer2.includes("4") == true) && (resultPlayer2.includes("5") == true) && (resultPlayer2.includes("6") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Kółko)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer2.includes("7") == true) && (resultPlayer2.includes("8") == true) && (resultPlayer2.includes("9") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Kółko)";
+        playerInfo.style.color = "Red"
     } // Pola pionowe
     else if ((resultPlayer2.includes("1") == true) && (resultPlayer2.includes("4") == true) && (resultPlayer2.includes("7") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Kółko)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer2.includes("2") == true) && (resultPlayer2.includes("5") == true) && (resultPlayer2.includes("8") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Kółko)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer2.includes("3") == true) && (resultPlayer2.includes("6") == true) && (resultPlayer2.includes("9") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Kółko)";
+        playerInfo.style.color = "Red"
     } // Pola ukośne
     else if ((resultPlayer2.includes("1") == true) && (resultPlayer2.includes("5") == true) && (resultPlayer2.includes("9") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Kółko)";
+        playerInfo.style.color = "Red"
     } else if ((resultPlayer2.includes("3") == true) && (resultPlayer2.includes("5") == true) && (resultPlayer2.includes("7") == true)) {
         playerInfo.textContent = "Wygrywa gracz (Kółko)";
+        playerInfo.style.color = "Red"
     }
 }
 boxes.forEach(box => {
@@ -93,10 +109,10 @@ const resetGame = () => {
     resultPlayer2 = [];
     turnCounter = 0;
     playerTurn = true;
+    playerInfo.style.color = "White"
     playerInfo.textContent = "Rozpocznij grę od Gracza pierwszego (Krzyżyk)"
     changePlayerButton.style.opacity = "1";
     boxes.forEach(box => {
-        box.style.backgroundColor = " #999"
         box.style.backgroundImage = "none";
         box.addEventListener("click", playerChoose, {
             once: true

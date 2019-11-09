@@ -7,6 +7,15 @@ body {
     text-align: center;
 }
 
+#head {
+    text-shadow: 4px 3px 0 #7A7A7A;
+    text-decoration: underline;
+}
+
+#board {
+    text-align: center;
+}
+
 #container {
     display: flex;
     flex-wrap: wrap;
@@ -17,6 +26,8 @@ body {
     background-color: black;
     margin: 0 auto;
     padding: 5px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 52px -5px rgba(0, 0, 0, 0.75);
 }
 
 .box {
@@ -27,19 +38,30 @@ body {
     background-color: #999;
 }
 
+.box:hover {
+    cursor: pointer;
+    background-color: #bbb;
+}
+
 .button {
     width: 130px;
     height: 60px;
     font-size: 20px;
+    border-radius: 15px;
+}
 
+.button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: #ccc;
 }
 
 div.buttons {
-    display: inline-block;
     width: 150px;
     height: auto;
 }
 
 button {
     margin: 5px;
+    text-align: center;
 }
