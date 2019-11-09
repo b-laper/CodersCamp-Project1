@@ -1,3 +1,3 @@
-# CodersCamp-Project1
+# Little game-project
 
-simple game made with JavaScript
+simple game made with JavaScript (Kółko i krzyżyk)
