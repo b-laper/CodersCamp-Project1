@@ -1,3 +1,3 @@
 # CodersCamp-Project1
 
-simple game with JavaScript
+simple game made with JavaScript
