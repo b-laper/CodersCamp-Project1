@@ -1,33 +1,55 @@
-const P1 = "kolko"
-const P2 = "krzyzyk"
-
-let turn = 0;
-let round = true;
+let turnCounter = 0;
+let lastTurn = 9
+let playerTurn = true;
+let resultPlayer1 = [];
+let resultPlayer2 = [];
+let optionSet;
 
 const boxes = document.querySelectorAll("div.box");
-const btn = document.querySelector("button.reset");
-const h2 = document.querySelector("h2.header")
+const resetButton = document.querySelector("button.reset");
+const playerInfo = document.querySelector("h2.header")
 
-choose = (e) => {
-    round = !round;
-    turn++;
-    if (round === true) {
-        e.target.style.backgroundImage = "url(img/kolko.png)"
-        h2.textContent = "Tura gracza pierwszego (Krzyżyk)"
-    } else {
-        e.target.style.backgroundImage = "url(img/krzyzyk.png)"
-        h2.textContent = "Tura gracza drugiego (Kółko)"
-    }
+const choose = (e) => {
+    optionSet = e.target.dataset.option;
+    playerTurn = !playerTurn;
+    turnCounter++;
+    if (playerTurn === true) playerWithCircle(e);
+    else playerWithCross(e);
+    console.log(e.target.dataset.option)
     console.log(e.target);
-    if (turn === 9) {
-        h2.textContent = "Koniec gry"
+    if (turnCounter === lastTurn) {
+        playerInfo.textContent = "Koniec gry"
+        // checkGame()
     }
 }
 
-resetGame = () => {
-    turn = 0;
-    round = true;
-    h2.textContent = "Rozpocznij grę od Gracza pierwszego (Krzyżyk)"
+const playerWithCross = (e) => {
+    e.target.style.backgroundImage = "url(img/krzyzyk.png)"
+    playerInfo.textContent = "Następny ruch: Tura gracza drugiego (Kółko)"
+    resultPlayer1.push(optionSet)
+}
+
+const playerWithCircle = (e) => {
+    e.target.style.backgroundImage = "url(img/kolko.png)"
+    playerInfo.textContent = "Następny ruch: Tura gracza pierwszego (Krzyżyk)"
+    resultPlayer2.push(optionSet)
+}
+//const checkGame() => {
+//     if (123 456 789
+// 147 258 369
+// 159 357)
+// }
+
+boxes.forEach(box => {
+    box.addEventListener("click", choose, {
+        once: true
+    });
+})
+
+const resetGame = () => {
+    turnCounter = 0;
+    playerTurn = true;
+    playerInfo.textContent = "Rozpocznij grę od Gracza pierwszego (Krzyżyk)"
     boxes.forEach(box => {
         box.style.backgroundColor = " #999"
         box.style.backgroundImage = "none";
@@ -37,9 +59,4 @@ resetGame = () => {
     })
 }
 
-boxes.forEach(box => {
-    box.addEventListener("click", choose, {
-        once: true
-    });
-})
-btn.addEventListener('click', resetGame);
+resetButton.addEventListener('click', resetGame);
