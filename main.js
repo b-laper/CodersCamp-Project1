@@ -9,7 +9,7 @@ const boxes = document.querySelectorAll("div.box");
 const resetButton = document.querySelector("button.reset");
 const playerInfo = document.querySelector("h2.header")
 
-const choose = (e) => {
+const playerChoose = (e) => {
     optionSet = e.target.dataset.option;
     playerTurn = !playerTurn;
     turnCounter++;
