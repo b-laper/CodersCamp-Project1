@@ -48,42 +48,58 @@ const playerWithCircle = (e) => {
 }
 
 const checkGame = (player, text) => {
-    // Pola poziome
-    if ((player.includes("1") == true) && (player.includes("2") == true) && (player.includes("3") == true)) {
-        playerInfo.textContent = text
-        playerInfo.style.color = "Red"
-        return;
-    } else if ((player.includes("4") == true) && (player.includes("5") == true) && (player.includes("6") == true)) {
-        playerInfo.textContent = text
-        playerInfo.style.color = "Red"
-        return;
-    } else if ((player.includes("7") == true) && (player.includes("8") == true) && (player.includes("9") == true)) {
-        playerInfo.textContent = text;
-        playerInfo.style.color = "Red";
-        return;
-    } // Pola pionowe
-    else if ((player.includes("1") == true) && (player.includes("4") == true) && (player.includes("7") == true)) {
-        playerInfo.textContent = text;
-        playerInfo.style.color = "Red";
-        return;
-    } else if ((player.includes("2") == true) && (player.includes("5") == true) && (player.includes("8") == true)) {
-        playerInfo.textContent = text;
-        playerInfo.style.color = "Red";
-        return;
-    } else if ((player.includes("3") == true) && (player.includes("6") == true) && (player.includes("9") == true)) {
-        playerInfo.textContent = text;
-        playerInfo.style.color = "Red";
-        return;
-    } // Pola ukośne
-    else if ((player.includes("1") == true) && (player.includes("5") == true) && (player.includes("9") == true)) {
-        playerInfo.textContent = text
-        playerInfo.style.color = "Red"
-        return;
-    } else if ((player.includes("3") == true) && (player.includes("5") == true) && (player.includes("7") == true)) {
-        playerInfo.textContent = text;
-        playerInfo.style.color = "Red"
-        return;
+    for (i = 0; i < 3; i++) {
+        for (j = 1; j <= 3; j++) {
+            player.every((item, index) => {
+                return item[index] == (j + (3 * i))
+            })
+        }
     }
+    for (i = 0; i < 3; i++) {
+        for (j = 1; j <= 9; j += 3) {
+            player.every((item, index) => {
+                return item[index] == (j + i)
+            })
+        }
+    }
+
+
+    // // Pola poziome
+    // if ((player.includes("1") == true) && (player.includes("2") == true) && (player.includes("3") == true)) {
+    //     playerInfo.textContent = text
+    //     playerInfo.style.color = "Red"
+    //     return;
+    // } else if ((player.includes("4") == true) && (player.includes("5") == true) && (player.includes("6") == true)) {
+    //     playerInfo.textContent = text
+    //     playerInfo.style.color = "Red"
+    //     return;
+    // } else if ((player.includes("7") == true) && (player.includes("8") == true) && (player.includes("9") == true)) {
+    //     playerInfo.textContent = text;
+    //     playerInfo.style.color = "Red";
+    //     return;
+    // } // Pola pionowe
+    // else if ((player.includes("1") == true) && (player.includes("4") == true) && (player.includes("7") == true)) {
+    //     playerInfo.textContent = text;
+    //     playerInfo.style.color = "Red";
+    //     return;
+    // } else if ((player.includes("2") == true) && (player.includes("5") == true) && (player.includes("8") == true)) {
+    //     playerInfo.textContent = text;
+    //     playerInfo.style.color = "Red";
+    //     return;
+    // } else if ((player.includes("3") == true) && (player.includes("6") == true) && (player.includes("9") == true)) {
+    //     playerInfo.textContent = text;
+    //     playerInfo.style.color = "Red";
+    //     return;
+    // } // Pola ukośne
+    // else if ((player.includes("1") == true) && (player.includes("5") == true) && (player.includes("9") == true)) {
+    //     playerInfo.textContent = text
+    //     playerInfo.style.color = "Red"
+    //     return;
+    // } else if ((player.includes("3") == true) && (player.includes("5") == true) && (player.includes("7") == true)) {
+    //     playerInfo.textContent = text;
+    //     playerInfo.style.color = "Red"
+    //     return;
+    // }
 }
 boxes.forEach(box => {
     box.addEventListener("click", playerChoose, {
