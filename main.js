@@ -1,7 +1,7 @@
 let turnCounter = 0;
 let playerTurn = true;
-let resultPlayer1 = [];
-let resultPlayer2 = [];
+let playerCrossFields = [];
+let playerCircleFields = [];
 let optionSet;
 
 const boxes = document.querySelectorAll("div.box");
@@ -14,35 +14,27 @@ const playerChoose = (e) => {
     optionSet = e.target.dataset.option;
     playerTurn = !playerTurn;
     turnCounter++;
-    changePlayerButton.style.opacity = "0";
-    if (playerTurn === true) playerWithCircle(e);
-    else playerWithCross(e);
-    if (turnCounter === lastTurn) {
-        playerInfo.textContent = "Koniec gry";
-    }
+    opacity(0)
+    if (playerTurn === true) playerWithCircleTurn(e);
+    else playerWithCrossTurn(e);
+    if (turnCounter === lastTurn) playerInfo.textContent = "Koniec gry";
+
 }
-const playerWithCross = (e) => {
+const playerWithCrossTurn = (e) => {
     e.target.style.backgroundImage = "url(img/krzyzyk.png)";
     playerInfo.textContent = "Następny ruch: Tura gracza (Kółko)";
-    resultPlayer1.push(optionSet);
-    checkGame(resultPlayer1, "Wygrywa gracz (Krzyżyk)")
-    if (playerInfo.textContent == "Wygrywa gracz (Krzyżyk)") {
-        boxes.forEach(box => {
-            box.removeEventListener("click", playerChoose, );
-        })
-    }
+    playerCrossFields.push(optionSet);
+    checkGame(playerCrossFields, "Wygrywa gracz (Krzyżyk)")
+    if (playerInfo.textContent == "Wygrywa gracz (Krzyżyk)") removeBoxesEvents()
 }
 
-const playerWithCircle = (e) => {
+const playerWithCircleTurn = (e) => {
     e.target.style.backgroundImage = "url(img/kolko.png)";
     playerInfo.textContent = "Następny ruch: Tura gracza (Krzyżyk)";
-    resultPlayer2.push(optionSet);
-    checkGame(resultPlayer2, "Wygrywa gracz (Kółko)")
-    if (playerInfo.textContent == "Wygrywa gracz (Kółko)") {
-        boxes.forEach(box => {
-            box.removeEventListener("click", playerChoose, );
-        })
-    }
+    playerCircleFields.push(optionSet);
+    checkGame(playerCircleFields, "Wygrywa gracz (Kółko)")
+    if (playerInfo.textContent == "Wygrywa gracz (Kółko)") removeBoxesEvents()
+
 }
 
 const checkGame = (player, text) => {
@@ -60,7 +52,6 @@ const checkGame = (player, text) => {
     //         })
     //     }
     // }
-
 
     // Pola poziome
     if ((player.includes("1") == true) && (player.includes("2") == true) && (player.includes("3") == true)) {
@@ -99,20 +90,15 @@ const checkGame = (player, text) => {
         alert(text)
     }
 }
-boxes.forEach(box => {
-    box.addEventListener("click", playerChoose, {
-        once: true
-    });
-})
 
 const resetGame = () => {
-    resultPlayer1 = [];
-    resultPlayer2 = [];
+    playerCrossFields = [];
+    playerCircleFields = [];
     turnCounter = 0;
     playerTurn = true;
     playerInfo.style.color = "White"
     playerInfo.textContent = "Rozpocznij grę od Gracza pierwszego (Krzyżyk)"
-    changePlayerButton.style.opacity = "1";
+    opacity(1)
     boxes.forEach(box => {
         box.style.backgroundImage = "none";
         box.addEventListener("click", playerChoose, {
@@ -122,11 +108,25 @@ const resetGame = () => {
 }
 
 const changePlayer = () => {
-    if (turnCounter === 0) {
-        playerTurn = false;
-        playerInfo.textContent = "Rozpocznij grę od Gracza pierwszego (Kółko)"
-        changePlayerButton.style.opacity = "0";
-    }
+    if (turnCounter === 0) playerTurn = !playerTurn;
+    if (playerTurn === false) playerInfo.textContent = "Rozpocznij grę od Gracza pierwszego (Kółko)"
+    else playerInfo.textContent = "Rozpocznij grę od Gracza pierwszego (Krzyżyk)"
 }
+const opacity = (value) => {
+    changePlayerButton.style.opacity = `${value}`
+}
+
+const removeBoxesEvents = () => {
+    boxes.forEach(box => {
+        box.removeEventListener("click", playerChoose, );
+    })
+}
+
+boxes.forEach(box => {
+    box.addEventListener("click", playerChoose, {
+        once: true
+    });
+})
+
 resetButton.addEventListener('click', resetGame);
 changePlayerButton.addEventListener('click', changePlayer);
